@@ -2,7 +2,7 @@
 
 Spring Boot REST API for tracking stocks and historical prices (Module 09 CI lab).
 
-![CI](https://github.com/YOUR-USERNAME/stock-tracker/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/JiajunFei/stock-tracker/actions/workflows/ci.yml/badge.svg)
 
 ## Build & test
 
