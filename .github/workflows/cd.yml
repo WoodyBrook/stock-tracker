@@ -34,8 +34,10 @@ jobs:
       - name: Derive lowercase image name
         id: image-name
         run: |
+          OWNER="$(echo '${{ github.repository_owner }}' | tr '[:upper:]' '[:lower:]')"
           IMAGE="ghcr.io/$(echo '${{ github.repository }}' | tr '[:upper:]' '[:lower:]'):${{ github.sha }}"
           echo "image=$IMAGE" >> "$GITHUB_OUTPUT"
+          echo "latest=ghcr.io/${OWNER}/stock-app:latest" >> "$GITHUB_OUTPUT"
 
       - name: Log in to GitHub Container Registry
         uses: docker/login-action@v3
@@ -51,7 +53,7 @@ jobs:
           push: true
           tags: |
             ${{ steps.image-name.outputs.image }}
-            ghcr.io/${{ github.repository_owner }}/stock-app:latest
+            ${{ steps.image-name.outputs.latest }}
 
   deploy:
     needs: build-and-push
