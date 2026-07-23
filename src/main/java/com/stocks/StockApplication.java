@@ -34,6 +34,7 @@ public class StockApplication {
                         bd("4.48"), bd("4.61"), bd("4.63"), bd("4.46"), 25_000_000L));
             }
             System.out.println("API ready at http://localhost:8080/api/stocks");
+            System.out.println("UI  ready at http://localhost:8080");
         };
     }
 

@@ -1,20 +1,18 @@
 # Stock Tracker
 
-Spring Boot REST API for tracking stocks and historical prices (Module 09 CI lab).
+Spring Boot REST API for tracking stocks and historical prices.
 
 ![CI](https://github.com/WoodyBrook/stock-tracker/actions/workflows/ci.yml/badge.svg)
 
-## Build & test
+## Pipelines
 
-```bash
-mvn -B package -DskipTests
-mvn -B test
-```
+- **CI** (`.github/workflows/ci.yml`) — build & test on push/PR to `main`
+- **CD** (`.github/workflows/cd.yml`) — build image, push to GHCR, deploy via Docker Compose on push to `main`
 
-## CI
+## Required GitHub Actions secrets (CD)
 
-GitHub Actions (`.github/workflows/ci.yml`) runs on every push and pull request to `main`:
-1. Checkout
-2. Set up JDK 21 (Temurin) with Maven cache
-3. Build (`mvn -B package -DskipTests`)
-4. Test (`mvn -B test`)
+| Secret | Meaning |
+|---|---|
+| `DEPLOY_HOST` | Linux VM IP / hostname |
+| `DEPLOY_USER` | SSH username |
+| `DEPLOY_SSH_KEY` | Private key contents |
